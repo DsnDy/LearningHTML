@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RentEz.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body { 
+        background: url("gray-texture-2.jpg");
+    }
+    img.displayed {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .colortext {
+     color: #cea348;
+    }
+    .size {
+     text-transform: lowercase;   
+    }
+    .bordertext {
+        border: 2px dashed black;
+        background-color: #cea348;
+    }
+    .transparent50 {
+    filter: alpha(Opacity=50);
+    opacity: 0.5; 
+    } 
+    h1 {
+        color: black;
+        font-family: arial;
+        font-size: 300%;
+        padding: 5px;
+        text-align: center;
+        animation-duration: 0.3s;
+    }
+    .grow:hover
+    {
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+    }
+    h2 {
+        color: black;
+        font-family: courier;
+        font-size: x-large;
+        text-align: center;
+        padding: 15px;
+    }
+    h3 {
+        color: black;
+        font-family: courier;
+        font-size: x-large;
+        text-align: left;
+        padding: 10px;
+    }
+    h4 {
+        color: black;
+        font-family: courier;
+        font-size: x-large;
+        text-align: left;
+    }
+    h5 {
+        text-align: center;
+    }
+    p {color: black;
+        font-family: courier;
+        font-size: x-large;
+        text-align: center;
+        padding: 10px;
+        animation-duration: 3s;
+        animation-name: slidein;
+    }
+
+    @keyframes slidein {
+    from {
+    margin-left: 100%;
+    width: 300%;
+    }
+
+    to {
+    margin-left: 0%;
+    width: 100%;
+    }
+    }
+    li {color: #cea348;
+        font-family: arial;
+        font-size: large;
+        text-align: center;
+        margin: auto;
+        padding: 10px;
+        list-style: none;
+        text-indent: -1em;
+    }
+    li::before {
+    content: '\2714';
+    padding-right: 5px;
+    color: black;
+    }
+    table tr:nth-child(even) {
+    background-color: gray;
+    font-family: courier;
+    text-align: center;
+    }
+    table tr:nth-child(odd) {
+    background-color: #cea348;
+    font-family: courier;
+    text-align: center;
+    padding: 10px;
+    }
+    table th {
+    background-color: black;
+    color: #cea348;
+    text-align: center;
+    }
+
+    #blink1 {
+    -webkit-animation: blink1 3s linear infinite;
+    animation: blink1 3s linear infinite;
+    }
+    @-webkit-keyframes blink1 {
+    0% { color: rgba(34, 34, 34, 1); }
+    50% { color: rgba(34, 34, 34, 0); }
+    100% { color: rgba(34, 34, 34, 1); }
+    }
+    @keyframes blink1 {
+    0% { color: rgba(34, 34, 34, 1); }
+    50% { color: rgba(34, 34, 34, 0); }
+    100% { color: rgba(34, 34, 34, 1); }
+    }
+    .parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    font-size: x-large;
+    border: 2px solid black;
+    }
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 1 / 3 / 2 / 4; }
+    .div4 { grid-area: 1 / 4 / 2 / 5; }
+    .div5 { grid-area: 1 / 5 / 2 / 6; }
+    a {
+    color: #cea348;
+    }
+    a:hover {
+    color: black;
+    }
+    .mirror { transform: scale(1, -1); 
+    }
+    .image.first,.image.second {
+    border:2px solid transparent;
+    margin:0;
+    padding:0;
+    }
+    .image.first {
+    opacity:1px;
+    display:block;
+    position:absolute;
+    z-index:100;
+    transition-duration:0.96s;
+    -webkit-transition-duration:0.96s;
+    -moz-transition-duration:0.96s;
+    -o-transition-duration:0.96s;
+    -ms-transition-duration:0.96s;
+    }
+    .image.first:hover {
+    opacity:0.00;
+    }
+    div.ImgField {
+    display:inline-block;
+    background-position:center center;
+    background-repeat:no-repeat;
+    margin:0;
+    padding:0;
+    }
+    .wrap {
+        width: 1310px;
+        margin: 0 auto;
+        height: 450px;
+    }
+    .bblock {
+    float: right;
+    line-height: 400px;
+    font-size: 40px;
+    margin-right: 10px;
+    text-align: center;
+    width: 30%;
+    margin: 1.66%;
+    }
+    * {
+    box-sizing: border-box;
+    }
+    .decor {
+    position: relative;
+    max-width: 400px;
+    background: black;
+    border-radius: 30px;
+    }
+    .form-inner {
+    padding: 50px;
+    }
+    .form-inner input, .form-inner textarea {
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: white;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    }
+    .form-inner input[type="submit"] {
+    margin-top: 30px;
+    background: #cea348;
+    border-bottom: 4px solid #cea348;
+    color: white;
+    font-size: 14px;
+    }
+    .form-inner textarea {
+    resize: none;
+    }
+    .form-inner h3 {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+    }
+    .form-inner input:hover[type="submit"] {
+    margin-top: 30px;
+    background-color: white;
+    border-bottom: 4px solid white;
+    color: black;
+    font-size: 14px;
+    }
+    button[name="Running"] { 
+    display: block;
+    border-radius: 7px;
+    padding: 10px 25px;
+    background: #cea348;
+    cursor: pointer;
+    }
+    button[name="Running"]:hover { 
+    background: #cea340;
+    }
+    @media screen and (max-width: 1280px) { div.contentblock {width: 1200px;} } 
+    @media screen and (max-width: 1140px) { div.contentblock {width: 1024px;} } 
+    @media screen and (max-width: 992px) { div.contentblock {width: 970px;} }
+</style>
+</head>
+<body>
+    <div contentblock>
+    <section>
+    <img class="displayed" src="REntez1.png" alt="RentEz.logo" width="1050" height="600">
+    <span class="grow"><h1 style="text-align:center;"><b>Rent<span class="colortext">Ez</span></b></h1></span>
+    <h2 style="text-align:center;"><i>Renting <span class="colortext">is</span> Easy</i></h2>
+    <p> <span class="size">Что такое <abbr title="Renting is Easy";>RentEz</abbr>?</span></p>
+    <p><u>RentEz</u> - это удобный сервис по подбору и аренде недвижимости.</p>
+    <h3>Наши преимущества:</h3>
+    <ul style="border: 2px solid black;">
+        <li>Система рейтинга, которая поможет как арендатору, так и арендодателю;</li>
+        <li>Сервис не работает с риелторами и агентствами;</li>
+        <li>Сделки происходят напрямую между арендатором и арендодателем;</li>
+        <li>Гибкая настройка условий аренды;</li>
+        <li>Удобный набор фильтров для поиска наилучшего варианта; </li>
+        <li>Идентификация пользователей;</li>
+        <li>Вход на сервис возможен по достижению совершеннолетия;</li>
+        <li><del>Кража Ваших данных</del></li>
+    </ul>
+    <h3>Чтобы начать пользоваться сервисом RentEz Вам необходимо:</h3>
+    <div class="parent">
+        <div class="div1"><a>Подтвердить Ваши номер телефона и почту;</a> </div>
+        <div class="div2"><a>Сделать и прикрепить Ваше фото с <b>паспортом</b>;</a> </div>
+        <div class="div3"><a>Выбрать кто Вы: арендатор или арендодатель;</a> </div>
+        <div class="div4"><a>Если Вы арендодатель - предоставить документы, подтверждающие что Вы являетесь владельцем недвижимости;</a> </div>
+        <div class="div5"><a>Начать пользоваться сервисом</a> </div>
+    </div>
+    <table>
+        <h2>Расписание(числитель)</h2>
+        <tr>
+            <th>Время</th>
+            <th>Понедельник</th>
+            <th>Вторник</th>
+            <th>Среда</th>
+            <th>Четверг</th>
+            <th>Пятница</th>
+        </tr>
+        <tr>
+            <td>08.30-10.00</td>
+            <td></td>
+            <td>Ин.язык(1 п.)</td>
+            <td>ООП(2 п.)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.10-11.40</td>
+            <td></td>
+            <td>Выч.мат(1 п.)</td>
+            <td>Прог-е(2 п.)</td>
+            <td>Выч.мат</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>12.10-13.40</td>
+            <td></td>
+            <td>Прог-е(1 п.)</td>
+            <td>Физра</td>
+            <td>Мат.анализ</td>
+            <td>Прог-е</td>
+        </tr>
+        <tr>
+            <td>13.50-15.20</td>
+            <td>ООП(1 п.)</td>
+            <td>Прог-е(2 п.)</td>
+            <td>Прог-е(1 п.)</td>
+            <td>Мат.анализ</td>
+            <td>ООП</td>
+        </tr>
+        <tr>
+            <td>15.30-17.00</td>
+            <td>Типы данных(1.п)</td>
+            <td>Выч.мат(2 п.)</td>
+            <td></td>
+            <td>Истрия</td>
+            <td>Выч.мат</td>
+        </tr>
+        <tr>
+            <td>17.10-18.40</td>
+            <td>Типы данных</td>
+            <td>Ин.язык</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>18.45-20.15</td>
+            <td>Типы данных</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <table>
+        <div class="card">
+        <h2>Расписание(знаменатель)</h2>
+        <div class="table">
+        <tr>
+            <th>Время</th>
+            <th>Понедельник</th>
+            <th>Вторник</th>
+            <th>Среда</th>
+            <th>Четверг</th>
+            <th>Пятница</th>
+            <th>Суббота</th>
+        </tr>
+        <tr>
+            <td>08.30-10.00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.10-11.40</td>
+            <td>Физра</td>
+            <td></td>
+            <td>Ин.язык(2 п.)</td>
+            <td>Ин.язык(2 п.)</td>
+            <td>Ин.язык(1 п.)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>12.10-13.40</td>
+            <td>Прог-е</td>
+            <td>Прог-е(1 п.)</td>
+            <td>ООП(2 п.)</td>
+            <td>История</td>
+            <td>Ин.язык(1 п.)</td>
+            <td>Мат.анализ</td>
+        </tr>
+        <tr>
+            <td>13.50-15.20</td>
+            <td>Типы данных</td>
+            <td>Прог-е(1 п.)</td>
+            <td>ООП</td>
+            <td>История</td>
+            <td>Прог-е(2 п.)</td>
+            <td>Мат.анализ</td>
+        </tr>
+        <tr>
+            <td>15.30-17.00</td>
+            <td>Типы данных(2 п.)</td>
+            <td></td>
+            <td>ООП(1 п.)</td>
+            <td></td>
+            <td>Прог-е(2 п.)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>17.10-18.40</td>
+            <td></td>
+            <td></td>
+            <td>Типы данных(1 п.)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>18.45-20.15</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h4 id="blink1"><span class="bordertext">Оценка арендной платы: <var>A</var><sup>рын</sup> = <var> V </var>*<var> R </var>+<var> OE </var>-<var> CapEx</var>.</span></h4>
+    <div class="wrap">
+        <div class="bblock"><img src="rentez_v1.png" alt="RentEz.v1" width="400" height="400" class="transparent50"></div>
+        <div class="bblock"><img src="rentez_v2.png" alt="RentEz.v2" width="400" height="400" class="image first"/>
+        <img class="image second" src="rentez_v2_2.png" alt="RentEz.v2" width="400" height="400"/></div>
+        <div class="bblock"><img src="rentez_v3.png" alt="RentEz.v3" width="400" height="400" class="mirror"></div>
+    </div>
+    <h5>
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab17f2ba240ec0a919fb5ac82891dd2712457f03762dbc1d6aae17b78fe487b9e&amp;width=560&amp;height=315&amp;lang=ru_RU&amp;scroll=true">
+    </script>
+    </h5>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oqiaX1tQpZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+    <button type="button" name="Running">Running</button>
+    <h3>
+    <form class="decor">
+        <div class="form-inner">
+        <h3>Написать нам</h3>
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="Телефон">
+        <textarea placeholder="Сообщение..." rows="3"></textarea>
+        <input type="submit" value="Отправить">
+        </div>
+    </form>
+    </h3>
+    <h3>
+    <a href="https://yandex.ru">
+        <img src="Yandex.png" alt="Yandex.ru"
+        style="width:80;height:50px;">
+    </h3>
+    </section>
+</div>
+</body>
+</html>
